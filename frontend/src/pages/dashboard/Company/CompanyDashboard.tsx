@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import RecentShipments from './RecentShipments/RecentShipments';
 import ShipmentVolumeChart from '../../../components/dashboard/Charts/ShipmentVolumeChart/ShipmentVolumeChart';
+import DeliverySuccessChart from '../../../components/dashboard/Charts/DeliverySuccessChart/DeliverySuccessChart';
 import '../../dashboard/Dashboard.css';
 
 const CompanyDashboard: React.FC = () => {
@@ -83,6 +84,10 @@ const CompanyDashboard: React.FC = () => {
 
         <div className="content-section">
           <ShipmentVolumeChart />
+        </div>
+
+        <div className="content-section">
+          <DeliverySuccessChart />
         </div>
 
         <div className="content-section">
