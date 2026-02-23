@@ -33,7 +33,7 @@ export default function DeliverySuccessChart({ data = MOCK_DELIVERY_DATA }: Deli
       <div className="delivery-chart-header">
         <h2 className="delivery-chart-title">
           <TrendingUp size={18} />
-          Delivery Success Rate
+          Delivery Success Rates
         </h2>
       </div>
 

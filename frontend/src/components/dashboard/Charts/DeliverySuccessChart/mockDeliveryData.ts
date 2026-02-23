@@ -9,10 +9,10 @@ export interface DeliveryOutcome {
  * Shows distribution of shipment outcomes.
  */
 export const MOCK_DELIVERY_DATA: DeliveryOutcome[] = [
-  { status: 'Delivered', count: 856, color: '#10b981' },
-  { status: 'In Transit', count: 342, color: '#3b82f6' },
-  { status: 'Delayed', count: 42, color: '#f59e0b' },
-  { status: 'Failed', count: 8, color: '#ef4444' },
+  { status: 'Delivered', count: 956, color: '#10b981' },
+  { status: 'In Transit', count: 442, color: '#3b82f6' },
+  { status: 'Delayed', count: 52, color: '#f59e0b' },
+  { status: 'Failed', count: 9, color: '#ef4444' },
 ];
 
 /**
