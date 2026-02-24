@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .dashboard-page {
-    --bg-dark: #07090d;
-    --bg-sidebar: #0b0e14;
-    --bg-card: #0f121a;
-    --bg-card-header: #141822;
+    --bg-dark: #0F1729;
+    --bg-sidebar: #050505;
+    --bg-card: #000000;
+    --bg-card-header: #0a0a0a;
     --border-color: #1e2433;
     --text-primary: #ffffff;
     --text-secondary: #8a8f9d;
@@ -15,6 +15,10 @@
 
     min-height: 100vh;
     background-color: var(--bg-dark);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+    background-size: 40px 40px;
+    background-position: 0 0;
+    background-attachment: fixed;
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     display: flex;

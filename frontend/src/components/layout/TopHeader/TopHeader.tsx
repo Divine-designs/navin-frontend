@@ -31,12 +31,13 @@ const TopHeader: React.FC<TopHeaderProps> = ({ toggleSidebar }) => {
           <Menu size={18} />
         </button>
         <div className="title-container">
-          <label className="header-search" aria-label="Search">
-            <Search size={16} className="header-search-icon" />
+          <label className="header-search" aria-label="Search" style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid #1e2433', paddingBottom: '4px' }}>
+            <Search size={16} className="header-search-icon" style={{ color: '#00f0ff' }} />
             <input
               type="text"
               className="header-search-input"
-              placeholder="Search shipments, wallet addresses, or harshes..."
+              placeholder="Search shipments, wallet addresses, or hashes..."
+              style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '13px', width: '320px', outline: 'none' }}
             />
           </label>
         </div>
@@ -45,7 +46,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ toggleSidebar }) => {
       <div className="top-header-right">
         <div className="right-icons">
           <NotificationDropdown />
-          
+
           <button className="icon-box" aria-label="Apps">
             <LayoutGrid size={18} />
           </button>
@@ -54,8 +55,8 @@ const TopHeader: React.FC<TopHeaderProps> = ({ toggleSidebar }) => {
         <div className="top-bar-divider"></div>
 
         <div className="user-profile-container" ref={dropdownRef}>
-          <button 
-            className="user-profile-trigger" 
+          <button
+            className="user-profile-trigger"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             aria-haspopup="true"
             aria-expanded={isDropdownOpen}
