@@ -14,6 +14,7 @@ import HelpCenter from './pages/HelpCenter/HelpCenter';
 import CreateShipment from './pages/dashboard/Company/CreateShipment/CreateShipment';
 import DashboardLayout from './components/layout/DashboardLayout';
 import ProtectedRoute from './components/auth/ProtectedRoute/ProtectedRoute';
+import CustomerProfile from './pages/dashboard/Customer/Profile/CustomerProfile';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
           {
             path: '/dashboard/help-center',
             element: <HelpCenter />,
+          },
+          {
+            path: '/dashboard/profile',
+            element: <CustomerProfile />,
           },
         ],
       },
