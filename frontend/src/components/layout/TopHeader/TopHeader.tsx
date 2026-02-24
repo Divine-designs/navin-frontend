@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, Bell, LayoutGrid, User, Settings as SettingsIcon, LogOut, Search } from 'lucide-react';
+import { Menu, LayoutGrid, User, Settings as SettingsIcon, LogOut, Search } from 'lucide-react';
+import NotificationDropdown from '../../notifications/NotificationDropdown/NotificationDropdown';
 import './TopHeader.css';
 
 interface TopHeaderProps {
@@ -43,10 +44,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ toggleSidebar }) => {
 
       <div className="top-header-right">
         <div className="right-icons">
-          <button className="icon-box" aria-label="Notifications">
-            <Bell size={18} />
-            <span className="notification-badge">3</span>
-          </button>
+          <NotificationDropdown />
           
           <button className="icon-box" aria-label="Apps">
             <LayoutGrid size={18} />
