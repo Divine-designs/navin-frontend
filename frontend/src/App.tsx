@@ -16,6 +16,7 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import ProtectedRoute from "./components/auth/ProtectedRoute/ProtectedRoute";
 import NotificationsPage from "./pages/Notifications/NotificationsPage";
 import CustomerProfile from './pages/dashboard/Customer/Profile/CustomerProfile';
+import ShipmentDetail from './pages/ShipmentDetail/ShipmentDetail';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotPassword />,
+  },
+  {
+    path: "/shipment-detail/:id",
+    element: <ShipmentDetail />,
   },
   {
     element: <ProtectedRoute />,
@@ -56,6 +61,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/shipments/create",
             element: <CreateShipment />,
+          },
+          {
+            path: "/dashboard/shipments/:id",
+            element: <ShipmentDetail />,
           },
           {
             path: "/dashboard/blockchain-ledger",
