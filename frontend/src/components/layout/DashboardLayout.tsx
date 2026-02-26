@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Cpu,
   X,
+  CreditCard,
 } from 'lucide-react';
 import './DashboardLayout.css';
 import TopHeader from './TopHeader/TopHeader';
@@ -25,6 +26,7 @@ const DashboardLayout: React.FC = () => {
     { name: 'Shipments', icon: <Package size={18} />, path: '/dashboard/shipments' },
     { name: 'Blockchain Ledger', icon: <Database size={18} />, path: '/dashboard/blockchain-ledger' },
     { name: 'Settlements', icon: <Wallet size={18} />, path: '/dashboard/settlements' },
+    { name: 'Payments', icon: <CreditCard size={18} />, path: '/dashboard/payments' },
     { name: 'Analytics', icon: <BarChart3 size={18} />, path: '/dashboard/analytics' },
   ];
 
@@ -44,7 +46,7 @@ const DashboardLayout: React.FC = () => {
       {/* Sidebar */}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-logo">
-          <Cpu fill="currentColor" size={24} />
+          <img src="/images/logo.svg" alt="Navin Logo" style={{ width: '32px', height: '32px' }} />
           <span>NAVIN</span>
           <button className="mobile-close" onClick={closeSidebar}>
             <X size={20} />
