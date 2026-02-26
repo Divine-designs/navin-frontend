@@ -1,75 +1,119 @@
-import React, { useState } from "react";
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { LayoutGrid, Truck, Map, User } from "lucide-react";
-import "./DashboardLayout.css";
-import TopHeader from "./TopHeader/TopHeader";
-import Sidebar from "./Sidebar/Sidebar";
+import React, { useState } from 'react';
+import { useNavigate, Outlet, useLocation } from 'react-router-dom';
+import {
+  LayoutDashboard,
+  Package,
+  Database,
+  Wallet,
+  BarChart3,
+  Settings,
+  HelpCircle,
+  ShieldCheck,
+  X,
+  CreditCard,
+} from 'lucide-react';
+import './DashboardLayout.css';
+import TopHeader from './TopHeader/TopHeader';
 
 const DashboardLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const mainMenu = [
+    { name: 'Dashboard', icon: <LayoutDashboard size={18} />, path: '/dashboard' },
+    { name: 'Shipments', icon: <Package size={18} />, path: '/dashboard/shipments' },
+    { name: 'Blockchain Ledger', icon: <Database size={18} />, path: '/dashboard/blockchain-ledger' },
+    { name: 'Settlements', icon: <Wallet size={18} />, path: '/dashboard/settlements' },
+    { name: 'Payments', icon: <CreditCard size={18} />, path: '/dashboard/payments' },
+    { name: 'Analytics', icon: <BarChart3 size={18} />, path: '/dashboard/analytics' },
+  ];
+
+  const systemMenu = [
+    { name: 'Settings', icon: <Settings size={18} />, path: '/dashboard/settings' },
+    { name: 'Help Center', icon: <HelpCircle size={18} />, path: '/dashboard/help-center' },
+  ];
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
-  const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
   return (
-    <div className={`dashboard-page ${isSidebarOpen ? "sidebar-open" : ""}`}>
+    <div className={`dashboard-page ${isSidebarOpen ? 'sidebar-open' : ''}`}>
       {/* Mobile Overlay */}
-      {isSidebarOpen && (
-        <div className="mobile-overlay" onClick={closeSidebar}></div>
-      )}
+      {isSidebarOpen && <div className="mobile-overlay" onClick={closeSidebar}></div>}
 
-      {/* Sidebar Component */}
-      <Sidebar
-        isOpen={isSidebarOpen}
-        isCollapsed={isCollapsed}
-        onClose={closeSidebar}
-        toggleCollapse={toggleCollapse}
-      />
+      {/* Sidebar */}
+      <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+        <div className="sidebar-logo">
+          <img src="/images/logo.svg" alt="Navin Logo" style={{ width: '32px', height: '32px' }} />
+          <span>NAVIN</span>
+          <button className="mobile-close" onClick={closeSidebar}>
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="sidebar-section">
+          <h3>Main Menu</h3>
+          <div className="sidebar-menu">
+            {mainMenu.map((item) => (
+              <button
+                key={item.name}
+                className={`sidebar-item ${location.pathname === item.path ? 'active' : ''}`}
+                onClick={() => {
+                  navigate(item.path);
+                  closeSidebar();
+                }}
+              >
+                {item.icon}
+                {item.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="sidebar-section">
+          <h3>System</h3>
+          <div className="sidebar-menu">
+            {systemMenu.map((item) => (
+              <button
+                key={item.name}
+                className={`sidebar-item ${location.pathname === item.path ? 'active' : ''}`}
+                onClick={() => {
+                  navigate(item.path);
+                  closeSidebar();
+                }}
+              >
+                {item.icon}
+                {item.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="sidebar-footer">
+          <div className="node-status">
+            <div className="node-icon">
+              <ShieldCheck size={20} />
+            </div>
+            <div className="node-info">
+              <h4>Enterprise Node</h4>
+              <p>
+                <span className="status-dot"></span>
+                Syncing: Block 18.2M
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
 
       {/* Main Content */}
-      <div className={`main-wrapper ${isCollapsed ? "collapsed" : ""}`}>
+      <div className="main-wrapper">
         <TopHeader toggleSidebar={toggleSidebar} />
 
         <main className="dashboard-content">
           <Outlet />
         </main>
       </div>
-
-      {/* Mobile Bottom Navigation - persists across all dashboard routes */}
-      <nav className="mobile-bottom-nav">
-        <button
-          className={`mobile-nav-tab ${location.pathname === "/dashboard" ? "active" : ""}`}
-          onClick={() => navigate("/dashboard")}
-        >
-          <LayoutGrid size={22} />
-          <span>Dashboard</span>
-        </button>
-        <button
-          className={`mobile-nav-tab ${location.pathname.includes("shipments") ? "active" : ""}`}
-          onClick={() => navigate("/dashboard/shipments")}
-        >
-          <Truck size={22} />
-          <span>Shipments</span>
-        </button>
-        <button
-          className={`mobile-nav-tab ${location.pathname.includes("analytics") ? "active" : ""}`}
-          onClick={() => navigate("/dashboard/analytics")}
-        >
-          <Map size={22} />
-          <span>Live Map</span>
-        </button>
-        <button
-          className={`mobile-nav-tab ${location.pathname.includes("settings") ? "active" : ""}`}
-          onClick={() => navigate("/dashboard/settings")}
-        >
-          <User size={22} />
-          <span>Account</span>
-        </button>
-      </nav>
     </div>
   );
 };
