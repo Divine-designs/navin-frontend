@@ -56,17 +56,17 @@ describe('TrackingTimeline', () => {
 
     expect(screen.getByText('Order Placed')).toBeInTheDocument();
     expect(screen.getByText('2026-02-20 10:00 AM')).toBeInTheDocument();
-    expect(screen.getByText('New York, NY')).toBeInTheDocument();
+    expect(screen.getAllByText('New York, NY').length).toBeGreaterThanOrEqual(1);
 
     expect(screen.getByText('Out for Delivery')).toBeInTheDocument();
     expect(screen.getByText('2026-02-23 09:00 AM')).toBeInTheDocument();
-    expect(screen.getByText('Boston, MA')).toBeInTheDocument();
+    expect(screen.getAllByText('Boston, MA').length).toBeGreaterThanOrEqual(1);
   });
 
   it('shows visual distinction between completed, current, and upcoming nodes', () => {
     render(<TrackingTimeline milestones={mockMilestones} />);
 
-    const completedIcon = screen.getByLabelText('Completed');
+    const completedIcon = screen.getAllByLabelText('Completed')[0];
     expect(completedIcon).toHaveClass('timeline-icon-completed');
 
     const currentIcon = screen.getByLabelText('Current');

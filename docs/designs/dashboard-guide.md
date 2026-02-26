@@ -76,3 +76,5 @@ Help Link: Need help? Contact Support
 Copyright: © 2026 Nexus Platform Inc. All rights reserved.
 
 figma link https://www.figma.com/design/F1glyTk2MzqqagwwuLZCJV/Login---Sign-up-Page-with-email-and-Connect-wallet?m=auto&t=HA8Cijngs5PtiXAW-6
+
+
