@@ -9,7 +9,6 @@ import {
   Settings,
   HelpCircle,
   ShieldCheck,
-  Cpu,
   X,
   CreditCard,
 } from 'lucide-react';
